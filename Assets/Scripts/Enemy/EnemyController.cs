@@ -32,7 +32,6 @@ public class EnemyController : MonoBehaviour
         {
             Movement();
         }
-
         animator.SetBool("isMoving", isMoving);
     }
 
@@ -86,6 +85,7 @@ public class EnemyController : MonoBehaviour
             bool isInRange = distance <= data.attackRange;
             if (isInRange)
             {
+                FacePlayer(collision.transform);
                 animator.SetBool("isInRange", isInRange);
                 isAttacking = true;
                 animator.SetBool("isAttacking", isAttacking);
@@ -103,12 +103,26 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void FacePlayer(Transform player)
+    {
+        if (player == null) return;
+
+        if (player.position.x < transform.position.x)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+    }
+    public void EndAttack()
     {
         isAttacking = false;
         animator.SetBool("isAttacking", false);
         animator.SetBool("isInRange", false);
     }
+
     private void Die()
     {
         Instantiate(deathEffect, transform.position, Quaternion.identity);

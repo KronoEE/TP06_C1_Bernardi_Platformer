@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     AudioManager audioManager;
 
+    private int jumpCount;
+    private int maxJumps = 1;
     private bool isGrounded;
     private bool takingDamage;
     private bool m_FacingRight = true;
@@ -44,21 +46,32 @@ public class PlayerController : MonoBehaviour
                 Movement();
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, data.lengthRayCast, layerMask);
                 isGrounded = hit.collider != null;
-                if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !takingDamage)
+
+                if (isGrounded)
+                {
+                   jumpCount = 0;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space) && !takingDamage && jumpCount < maxJumps)
                 {
                     audioManager.PlaySFX(audioManager.jumpSfx);
+                    rb.velocity = new Vector2(rb.velocity.x, 0f);
                     rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                    jumpCount++;
                 }
             }
+
             bool condition = !bisAttacking && isGrounded;
             attackCondition = condition;
+
+            // Atacar
             if (Input.GetKeyDown(KeyCode.E) && attackCondition)
             {
                 audioManager.PlaySFX(audioManager.ShootSfx);
                 Attacking();
             }
         }
-        animator.SetBool("isGrounded", isGrounded); 
+        animator.SetBool("isGrounded", isGrounded);
         animator.SetBool("takingDamage", takingDamage);
         animator.SetBool("attacking", bisAttacking);
     }
