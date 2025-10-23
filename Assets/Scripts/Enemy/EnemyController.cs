@@ -6,11 +6,13 @@ using UnityEngine.Windows.Speech;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] private Healthbar healthbar;
     [SerializeField] private Transform player;
     [SerializeField] private EnemyDataSO data;
-    [SerializeField] private int health = 100;
     [SerializeField] private ParticleSystem deathEffect;
 
+    private int health;
+    private int maxHealth = 100;
     private Rigidbody2D rb;
     private float movementX;
     private bool isAttacking;
@@ -20,6 +22,8 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private void Start()
     {
+        health = maxHealth;
+        healthbar.UpdateHealthBar(maxHealth, health);   
         playerAlive = true;
         isDead = false;
         rb = GetComponent<Rigidbody2D>();
@@ -38,7 +42,8 @@ public class EnemyController : MonoBehaviour
     public void TakingDamage(int damageAmount)
     {
             health -= damageAmount;
-            if (health <= 0)
+            healthbar.UpdateHealthBar(maxHealth, health);
+        if (health <= 0)
             {
                 isDead = true;
                 isMoving = false;
