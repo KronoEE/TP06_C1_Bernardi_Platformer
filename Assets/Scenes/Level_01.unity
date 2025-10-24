@@ -10556,6 +10556,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 374389586423298222, guid: 3be7c985f0d2b074fbde1d5342dce20c, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 374389586423298222, guid: 3be7c985f0d2b074fbde1d5342dce20c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -973622129535999213, guid: fc3f55be4087c8c4ea650c9b77cda784, type: 3}
     - target: {fileID: 794016725207322093, guid: 3be7c985f0d2b074fbde1d5342dce20c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.88
