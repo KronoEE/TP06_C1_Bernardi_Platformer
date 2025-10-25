@@ -26,9 +26,8 @@ public class PlayerController : MonoBehaviour
     public bool attackCondition;
     public bool bisAttacking;
     public bool isDead;
-    public int maxHealth = 3;
+    public int jumpForce = 7;
     public int health;
-    public float jumpForce = 10f;
     public int coins = 0;
 
     private void Awake()
@@ -37,8 +36,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        health = maxHealth;
-        healthbar.UpdateHealthBar(maxHealth, health);
+        health = data.maxHealth;
+        healthbar.UpdateHealthBar(data.maxHealth, health);
         rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
@@ -107,7 +106,7 @@ public class PlayerController : MonoBehaviour
         {
             takingDamage = true;
             health -= damageAmount;
-            healthbar.UpdateHealthBar(maxHealth, health);
+            healthbar.UpdateHealthBar(data.maxHealth, health);
             if (health <= 0)
             {
                 audioManager.Stop();

@@ -7,4 +7,5 @@ public class PlayerDataSO : ScriptableObject
     public float velocity = 6f;
     public float reboundForce = 10f;
     public float lengthRayCast = 1f;
+    public int maxHealth = 3;
 }

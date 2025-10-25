@@ -12,7 +12,7 @@ public class JumpPowerUp : MonoBehaviour
         if (collision.gameObject.layer == playerLayer)
         {
             PlayerController playerScript = collision.gameObject.GetComponent<PlayerController>();
-            playerScript.jumpForce += playerScript.health + jumpForceToAdd;
+            playerScript.jumpForce += playerScript.jumpForce + jumpForceToAdd;
             Destroy(gameObject);
         }
     }
