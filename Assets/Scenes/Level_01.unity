@@ -10670,7 +10670,11 @@ PrefabInstance:
     - target: {fileID: 464006937737145678, guid: 18fa64e26c0f6624c94ca6bb1db35e36, type: 3}
       propertyPath: ShootSfx
       value: 
-      objectReference: {fileID: 8300000, guid: eef7b2dad0d91d948b779f818cb2434b, type: 3}
+      objectReference: {fileID: 8300000, guid: 22d87b91a0845a147a8978f25a264726, type: 3}
+    - target: {fileID: 464006937737145678, guid: 18fa64e26c0f6624c94ca6bb1db35e36, type: 3}
+      propertyPath: backgroundMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a5e0ac88f0782141834dd156e493645, type: 3}
     - target: {fileID: 1619609781505797213, guid: 18fa64e26c0f6624c94ca6bb1db35e36, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
