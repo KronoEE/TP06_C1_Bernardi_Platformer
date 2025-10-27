@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class JumpPowerUp : MonoBehaviour
 {
-    [SerializeField] private int jumpForceToAdd = 5;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         int playerLayer = LayerMask.NameToLayer("Player");
@@ -12,7 +11,7 @@ public class JumpPowerUp : MonoBehaviour
         if (collision.gameObject.layer == playerLayer)
         {
             PlayerController playerScript = collision.gameObject.GetComponent<PlayerController>();
-            playerScript.jumpForce += playerScript.jumpForce + jumpForceToAdd;
+            playerScript.StartJumpBoost();
             Destroy(gameObject);
         }
     }

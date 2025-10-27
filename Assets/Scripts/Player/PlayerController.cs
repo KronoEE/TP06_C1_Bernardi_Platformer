@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public bool attackCondition;
     public bool bisAttacking;
     public bool isDead;
-    public int jumpForce = 7;
+    public float currjumpForce = 10f;
     public int health;
     public int coins = 0;
 
@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         health = data.maxHealth;
+        currjumpForce = data.maxJumpForce;
         healthbar.UpdateHealthBar(data.maxHealth, health);
         rb = GetComponent<Rigidbody2D>();
     }
@@ -59,7 +60,7 @@ public class PlayerController : MonoBehaviour
                 {
                     audioManager.PlaySFX(audioManager.jumpSfx);
                     rb.velocity = new Vector2(rb.velocity.x, 0f);
-                    rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                    rb.AddForce(new Vector2(0f, currjumpForce), ForceMode2D.Impulse);
                     jumpCount++;
                 }
             }
@@ -157,5 +158,16 @@ public class PlayerController : MonoBehaviour
             audioManager.PlaySFX(audioManager.coinsSfx);
             coinManager.coinCount++;
         }
+    }
+
+    public void StartJumpBoost()
+    {
+        StartCoroutine(JumpBoost());
+    }
+    private IEnumerator JumpBoost()
+    {
+        currjumpForce = currjumpForce + data.jumpBoostForce;
+        yield return new WaitForSeconds(data.jumpBoostTime);
+        currjumpForce = data.maxJumpForce;
     }
 }
