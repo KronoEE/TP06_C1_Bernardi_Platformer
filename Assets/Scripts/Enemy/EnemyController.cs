@@ -97,7 +97,7 @@ public class EnemyController : MonoBehaviour
                 Vector2 directionDamage = new Vector2(transform.position.x, 0);
                 PlayerController playerScript = collision.gameObject.GetComponent<PlayerController>();
 
-                playerScript.TakingDamage(directionDamage, 1);
+                playerScript.TakingDamage(directionDamage, data.damageAmount);
                 playerAlive = !playerScript.isDead;
                 if (!playerAlive)
                 {

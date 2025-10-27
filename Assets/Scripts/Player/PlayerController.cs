@@ -55,7 +55,6 @@ public class PlayerController : MonoBehaviour
                 {
                    jumpCount = 0;
                 }
-
                 if (Input.GetKeyDown(KeyCode.Space) && !takingDamage && jumpCount < maxJumps)
                 {
                     audioManager.PlaySFX(audioManager.jumpSfx);
@@ -163,6 +162,15 @@ public class PlayerController : MonoBehaviour
     public void StartJumpBoost()
     {
         StartCoroutine(JumpBoost());
+    }
+
+    public void Addhealth(int healthToAdd)
+    {
+       health += healthToAdd;
+        if (health > data.maxHealth)
+        {
+            health = data.maxHealth;
+        }
     }
     private IEnumerator JumpBoost()
     {

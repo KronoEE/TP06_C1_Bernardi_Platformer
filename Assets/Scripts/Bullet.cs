@@ -8,9 +8,14 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private int damage = 50;
     [SerializeField] private GameObject hitEffect;
-    void Start()
+    private void Start()
     {
-        rb.velocity = transform.right * speed;
+       rb.velocity = transform.right * speed;
+    }
+
+    private void Update()
+    {
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
