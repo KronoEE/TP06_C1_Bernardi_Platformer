@@ -138,6 +138,7 @@ public class PlayerController : MonoBehaviour
     public void DeactiveAttack()
     {
         bisAttacking = false;
+        animator.SetBool("attacking", !bisAttacking);
     }
     private void Flip()
     {
