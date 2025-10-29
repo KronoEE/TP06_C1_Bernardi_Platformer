@@ -20,13 +20,14 @@ public class PlayerController : MonoBehaviour
     private int jumpCount;
     private int maxJumps = 1;
     private bool isGrounded;
+    private bool isInDeathZone;
     private bool takingDamage;
     private bool m_FacingRight = true;
+    private float currjumpForce = 10f;
 
     public bool attackCondition;
     public bool bisAttacking;
     public bool isDead;
-    public float currjumpForce = 10f;
     public int health;
     public int coins = 0;
 
@@ -123,7 +124,6 @@ public class PlayerController : MonoBehaviour
             }
         }   
     }
-
     public void DeactiveDamage()
     {
         takingDamage = false;
@@ -157,6 +157,13 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             audioManager.PlaySFX(audioManager.coinsSfx);
             coinManager.coinCount++;
+        }
+
+        int DeathLayer = LayerMask.NameToLayer("DeathZone");
+        if (other.gameObject.layer == DeathLayer)
+        {
+            isDead = true;
+            Destroy(gameObject);
         }
     }
 
