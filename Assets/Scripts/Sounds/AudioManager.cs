@@ -15,6 +15,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip WinSfx;
     public AudioClip LooseSfx;
     public AudioClip ShootSfx;
+    [Header("-------- Audio Clip UI --------")]
+    public AudioClip ButtonUI;
+    public AudioClip HoverUi;
 
     private void Start()
     {
