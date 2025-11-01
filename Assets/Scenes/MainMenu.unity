@@ -187,6 +187,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &73073452 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7016391100916362698, guid: 18fa64e26c0f6624c94ca6bb1db35e36, type: 3}
+  m_PrefabInstance: {fileID: 1579807189}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &174735488 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8781981357539565423, guid: a7e37b0f2579ae540932357a8feaf17c, type: 3}
@@ -1062,9 +1067,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 464006937737145678, guid: 18fa64e26c0f6624c94ca6bb1db35e36, type: 3}
+      propertyPath: ButtonUI
+      value: 
+      objectReference: {fileID: 8300000, guid: 2686d826ef71e5845a8787d5745ca7bf, type: 3}
+    - target: {fileID: 464006937737145678, guid: 18fa64e26c0f6624c94ca6bb1db35e36, type: 3}
       propertyPath: coinsSfx
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 464006937737145678, guid: 18fa64e26c0f6624c94ca6bb1db35e36, type: 3}
+      propertyPath: uiSource
+      value: 
+      objectReference: {fileID: 73073452}
     - target: {fileID: 464006937737145678, guid: 18fa64e26c0f6624c94ca6bb1db35e36, type: 3}
       propertyPath: backgroundMusic
       value: 
@@ -1273,8 +1286,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -128.6}
-  m_SizeDelta: {x: 800, y: 150}
+  m_AnchoredPosition: {x: 0, y: -227.8}
+  m_SizeDelta: {x: 1500, y: 150}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1724299171
 MonoBehaviour:
@@ -1298,8 +1311,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Plat-Monster
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a5fa260c78cd0fa4da84a3e3ac785fb6, type: 2}
+  m_sharedMaterial: {fileID: 5737926083769292625, guid: a5fa260c78cd0fa4da84a3e3ac785fb6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1323,8 +1336,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 180
+  m_fontSizeBase: 180
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -16,26 +16,47 @@ public class VolumeSettings : MonoBehaviour
     }
     private void Start()
     {
-        SetMusicVolume(musicSlider.value);
-        SetSFXVolume(sfxSlider.value);
-        SetUiVolume(UISlider.value);
+        LoadVolumes();
     }
 
+    private void OnDestroy()
+    {
+        musicSlider.onValueChanged.RemoveAllListeners();
+        sfxSlider.onValueChanged.RemoveAllListeners();
+        UISlider.onValueChanged.RemoveAllListeners();
+    }
     public void SetMusicVolume(float volume)
     {
-        volume = musicSlider.value;
+        volume = Mathf.Clamp(volume, 0.0001f, 1f);
         audioMixer.SetFloat("music", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("musicVolume", volume);
     }
-
      public void SetSFXVolume(float volume)
     {
-        volume = sfxSlider.value;
+        volume = Mathf.Clamp(volume, 0.0001f, 1f);
         audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("sfxVolume", volume);
     }
 
     public void SetUiVolume(float volume)
     {
-        volume = UISlider.value; 
+        volume = Mathf.Clamp(volume, 0.0001f, 1f);
         audioMixer.SetFloat("UI", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("uiVolume", volume);
+    }
+
+    private void LoadVolumes()
+    {
+        float music = PlayerPrefs.GetFloat("musicVolume");
+        float sfx = PlayerPrefs.GetFloat("sfxVolume");
+        float ui = PlayerPrefs.GetFloat("uiVolume");
+
+        musicSlider.value = music;
+        sfxSlider.value = sfx;
+        UISlider.value = ui;
+
+        SetMusicVolume(music);
+        SetSFXVolume(sfx);
+        SetUiVolume(ui);
     }
 }

@@ -5,8 +5,9 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [Header("-------- Audio Source --------")]
-    [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource sfxSource;
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource uiSource;
 
     [Header("-------- Audio Clip --------")]
     public AudioClip backgroundMusic;
@@ -33,5 +34,9 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);
+    }
+    public void PlayUI(AudioClip clip)
+    {
+       uiSource.PlayOneShot(clip);
     }
 }
