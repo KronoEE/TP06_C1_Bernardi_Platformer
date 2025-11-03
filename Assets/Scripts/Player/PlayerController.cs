@@ -24,13 +24,11 @@ public class PlayerController : MonoBehaviour
     private bool takingDamage;
     private bool m_FacingRight = true;
     private float currjumpForce = 10f;
+    private bool bisAttacking;
+    private int health;
 
     public bool attackCondition;
-    public bool bisAttacking;
     public bool isDead;
-    public int health;
-    public int coins = 0;
-
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -64,10 +62,8 @@ public class PlayerController : MonoBehaviour
                     jumpCount++;
                 }
             }
-
             bool condition = !bisAttacking && isGrounded;
             attackCondition = condition;
-
             // Atacar
             if (Input.GetKeyDown(KeyCode.E) && attackCondition)
             {
@@ -79,7 +75,6 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("takingDamage", takingDamage);
         animator.SetBool("attacking", bisAttacking);
     }
-
     public void Movement()
     {
         float velocityX = Input.GetAxis("Horizontal") * Time.deltaTime * data.velocity;
@@ -100,7 +95,6 @@ public class PlayerController : MonoBehaviour
         if (!takingDamage)
             transform.position = new Vector3(velocityX + position.x, position.y, position.z);
     }
-
     public void TakingDamage(Vector2 direction, int damageAmount)
     {
         if (!takingDamage)
@@ -129,7 +123,6 @@ public class PlayerController : MonoBehaviour
         takingDamage = false;
         rb.velocity = Vector2.zero;
     }
-
     public void Attacking()
     {
         bisAttacking = true;
@@ -166,7 +159,6 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     public void StartJumpBoost()
     {
         StartCoroutine(JumpBoost());
@@ -178,6 +170,7 @@ public class PlayerController : MonoBehaviour
         if (health > data.maxHealth)
         {
             health = data.maxHealth;
+            healthbar.UpdateHealthBar(data.maxHealth, health);
         }
     }
     private IEnumerator JumpBoost()

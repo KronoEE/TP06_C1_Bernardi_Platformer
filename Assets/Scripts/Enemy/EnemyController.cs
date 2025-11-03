@@ -13,12 +13,13 @@ public class EnemyController : MonoBehaviour
 
     private int health;
     private int maxHealth = 100;
-    private Rigidbody2D rb;
     private float movementX;
     private bool isAttacking;
     private bool isMoving;
     private bool playerAlive;
     private bool isDead;
+
+    private Rigidbody2D rb;
     private Animator animator;
     private void Start()
     {
