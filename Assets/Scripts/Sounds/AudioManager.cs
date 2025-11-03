@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip WinSfx;
     public AudioClip LooseSfx;
     public AudioClip ShootSfx;
+    public AudioClip portalSfx;
     [Header("-------- Audio Clip UI --------")]
     public AudioClip ButtonUI;
     public AudioClip HoverUi;
@@ -28,7 +29,8 @@ public class AudioManager : MonoBehaviour
 
     public void Stop()
     {
-        musicSource.Stop();
+        if (sfxSource != null)
+            musicSource.Stop();
     }
 
     public void PlaySFX(AudioClip clip)
@@ -38,5 +40,12 @@ public class AudioManager : MonoBehaviour
     public void PlayUI(AudioClip clip)
     {
        uiSource.PlayOneShot(clip);
+    }
+
+    public void PlayLoopedSfx(AudioClip clip)
+    {
+        sfxSource.clip = clip;
+        sfxSource.loop = true;
+        sfxSource.Play();
     }
 }
