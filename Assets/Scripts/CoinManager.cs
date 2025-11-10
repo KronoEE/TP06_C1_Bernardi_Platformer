@@ -4,7 +4,6 @@ using UnityEngine;
 public class CoinManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI coinText;
-    [SerializeField] private GameObject panelWin;
     public int coinCount = 0;
     public bool reachedCoinGoal = false;
 

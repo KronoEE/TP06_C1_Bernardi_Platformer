@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private EnemyDataSO data;
     [SerializeField] private ParticleSystem deathEffect;
+    [SerializeField] private bool isSwordEnemy;
 
     private int health;
     private int maxHealth = 100;
@@ -15,8 +16,13 @@ public class EnemyController : MonoBehaviour
     private bool playerAlive;
     private bool isDead;
 
+    AudioManager audioManager;
     private Rigidbody2D rb;
     private Animator animator;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     private void Start()
     {
         health = maxHealth;
@@ -89,7 +95,15 @@ public class EnemyController : MonoBehaviour
             {
                 FacePlayer(collision.transform);
                 animator.SetBool("isInRange", isInRange);
-                isAttacking = true;
+                if (isSwordEnemy)
+                {
+                    audioManager.PlaySFX(audioManager.SwordAttackSfx);
+                }
+                else if (!isSwordEnemy)
+                {
+                    audioManager.PlaySFX(audioManager.MonsterAttackSfx);
+                }
+                    isAttacking = true;
                 animator.SetBool("isAttacking", isAttacking);
                 Vector2 directionDamage = new Vector2(transform.position.x, 0);
                 PlayerController playerScript = collision.gameObject.GetComponent<PlayerController>();

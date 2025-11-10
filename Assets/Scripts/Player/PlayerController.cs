@@ -5,18 +5,16 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Healthbar healthbar;
     [SerializeField] private PlayerDataSO data;
-    [SerializeField] private LayerMask layerMask;
-    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private CoinManager coinManager;
 
     AudioManager audioManager;
 
+    private Rigidbody2D rb;
     private int jumpCount;
     private int maxJumps = 1;
     private bool isGrounded;
-    private bool isInDeathZone;
     private bool takingDamage;
     private bool m_FacingRight = true;
     private float currjumpForce = 10f;
@@ -42,26 +40,30 @@ public class PlayerController : MonoBehaviour
         {
             if (!bisAttacking)
             {
+                // Movement and cast a raycast to check if grounded
                 Movement();
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, data.lengthRayCast, layerMask);
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, data.lengthRayCast, data.layerMask);
                 isGrounded = hit.collider != null;
 
                 if (isGrounded)
                 {
-                   jumpCount = 0;
+                    // If is grounded reset jump count
+                    jumpCount = 0;
                 }
-                if (Input.GetKeyDown(KeyCode.Space) && !takingDamage && jumpCount < maxJumps)
+                if (Input.GetKeyDown(data.jumpKey) && !takingDamage && jumpCount < maxJumps)
                 {
+                    // If jump key is pressed and player is not taking damage and jump count is less than max jumps, jump
                     audioManager.PlaySFX(audioManager.jumpSfx);
                     rb.velocity = new Vector2(rb.velocity.x, 0f);
                     rb.AddForce(new Vector2(0f, currjumpForce), ForceMode2D.Impulse);
                     jumpCount++;
                 }
             }
+            // Setting Attack condition
             bool condition = !bisAttacking && isGrounded;
             attackCondition = condition;
             // Atacar
-            if (Input.GetKeyDown(KeyCode.E) && attackCondition)
+            if (Input.GetKeyDown(data.attackKey) && attackCondition)
             {
                 audioManager.PlaySFX(audioManager.ShootSfx);
                 Attacking();
@@ -127,7 +129,7 @@ public class PlayerController : MonoBehaviour
     public void DeactiveAttack()
     {
         bisAttacking = false;
-        animator.SetBool("attacking", !bisAttacking);
+        animator.SetBool("attacking", bisAttacking = false);
     }
     private void Flip()
     {
