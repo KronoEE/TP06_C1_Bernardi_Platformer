@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuSystem : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private Button playBtn;
     [SerializeField] private Button SettingsBtn;
     [SerializeField] private Button quitBtn;
-    [SerializeField] private GameObject settingsPanel;
     [SerializeField] private Button SettingsBackBtn;
+    [Header("Panels")]
+    [SerializeField] private GameObject buttons;
+    [SerializeField] private GameObject settingsPanel;
 
     AudioManager audioManager;
     private void Awake()
@@ -44,6 +47,7 @@ public class MainMenuSystem : MonoBehaviour
     private void OnSettingsClicked()
     {
         audioManager.PlayUI(audioManager.ButtonUI);
+        buttons.SetActive(false);
         settingsPanel.SetActive(true);
     }
 
@@ -51,5 +55,6 @@ public class MainMenuSystem : MonoBehaviour
     {
         audioManager.PlayUI(audioManager.ButtonUI);
         settingsPanel.SetActive(false);
+        buttons.SetActive(true);
     }
 }

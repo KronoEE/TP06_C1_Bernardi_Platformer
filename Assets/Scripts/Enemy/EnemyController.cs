@@ -56,6 +56,7 @@ public class EnemyController : MonoBehaviour
 
     private void Movement()
     {
+        if (player == null) return;
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
         if (distanceToPlayer < data.detectionRadius)

@@ -153,15 +153,18 @@ public class PlayerController : MonoBehaviour
         int DeathLayer = LayerMask.NameToLayer("DeathZone");
         if (other.gameObject.layer == DeathLayer)
         {
+            audioManager.Stop();
+            audioManager.PlaySFX(audioManager.LooseSfx);
             isDead = true;
             Destroy(gameObject);
+            deathPanel.SetActive(true);
+            Time.timeScale = 0;
         }
     }
     public void StartJumpBoost()
     {
         StartCoroutine(JumpBoost());
     }
-
     public void Addhealth(int healthToAdd)
     {
         health += healthToAdd;
