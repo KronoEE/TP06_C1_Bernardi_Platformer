@@ -14,7 +14,7 @@ Saltá, esquivá trampas y usá tus ataques para abrirte camino.
 | Saltar | `Espacio` |
 | Atacar / Disparar | `E` |
 
----
+-----------------------------
 
 ## ⚔️ Mecánicas Principales
 
@@ -22,7 +22,12 @@ Saltá, esquivá trampas y usá tus ataques para abrirte camino.
 - 💰 **Monedas:** recolectá monedas a lo largo del nivel.
 - 🌊 **Agua:** caer al agua provoca la muerte instantánea.
 - 🌀 **Portal Final:** llegá al portal para completar el nivel y ganar.
-- ❤️ **Barra de Vida:** mantené tu salud; si llega a cero, el jugador muere.
+
+## 👤 Autor y Créditos
+- Desarrollado por: JuanDev
+- Motor: Unity
+- Arte: itch.io marketplace | unity asset store
+- Música y SFX: freesound
 
 ## Link itch.io
 https://juandev19.itch.io/
