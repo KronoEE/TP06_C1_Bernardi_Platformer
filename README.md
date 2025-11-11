@@ -24,10 +24,10 @@ Saltá, esquivá trampas y usá tus ataques para abrirte camino.
 - 🌀 **Portal Final:** llegá al portal para completar el nivel y ganar.
 
 ## 👤 Autor y Créditos
-Desarrollado por: JuanDev
-Motor: Unity
-Arte: itch.io marketplace | unity asset store
-Música y SFX: freesound
+- Desarrollado por: JuanDev
+- Motor: Unity
+- Arte: itch.io marketplace | unity asset store
+- Música y SFX: freesound
 
 ## Link itch.io
 https://juandev19.itch.io/
